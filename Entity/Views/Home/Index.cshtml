@@ -1,0 +1,43 @@
+﻿@model List<Entity.Domain.Customers>
+
+
+<style>
+    table {width:90%;background:#ccc; margin: 10px auto;border-collapse:collapse;}
+/*border-collapse:collapse合併內外邊距(去除表格單元格預設的2個畫素內外邊距*/
+ th, td {height:25px;line-height:25px;text-align:center;border:1px solid #ccc;}
+ th {background:#eee;font-weight:normal;}
+ tr {background:#fff;}
+ tr:hover {background:#cc0;}
+ td a {color:#06f;text-decoration:none;}
+ td a:hover {color:#06f;text-decoration:underline;}
+    </style>
+<p>
+    <br />
+    <table class="table" id="tab">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>BIRTHDAY</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.CustomerID</td>
+        <td>@item.CompanyName</td>
+        <td>@item.ContactName</td>
+        <th>
+            @Html.ActionLink(
+                 "新增",
+                 "Create",
+                 "Home",
+                 routeValues: new
+                 {
+                     id = item.CustomerID
+                 },
+                     htmlAttributes: null
+                         );
+    </th>
+    </tr>
+        }
+    </table>
+</p>
