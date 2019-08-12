@@ -65,20 +65,19 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-sm btn-warning" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-sm btn-info" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-sm btn-danger" })
+                <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>@Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-sm btn-warning" }) |
+                <i class="glyphicon glyphicon-th" aria-hidden="true"></i>@Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-sm btn-info" }) |
+                <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>@Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-sm btn-danger" })
             </td>
         </tr>
     }
 
 </table>
-<i class="glyphicon glyphicon-euro"aria-hidden="true"></i>
+
 @*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
 @Html.PagedListPager((IPagedList)Model,
                                      page => Url.Action("Index", new
                                      {
                                        page = page
-                                       
                                      }),
-                                     PagedListRenderOptions.MinimalWithPageCountText)
+                                     PagedListRenderOptions.ClassicPlusFirstAndLast)
